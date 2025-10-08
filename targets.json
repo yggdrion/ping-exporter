@@ -1,0 +1,36 @@
+{
+    "targets": [
+        {
+            "name": "cloudflare_primary",
+            "host": "1.1.1.1"
+        },
+        {
+            "name": "cloudflare_secondary",
+            "host": "1.0.0.1"
+        },
+        {
+            "name": "google_primary",
+            "host": "8.8.8.8"
+        },
+        {
+            "name": "google_secondary",
+            "host": "8.8.4.4"
+        },
+        {
+            "name": "quad9_primary",
+            "host": "9.9.9.9"
+        },
+        {
+            "name": "quad9_secondary",
+            "host": "149.112.112.112"
+        },
+        {
+            "name": "opendns_primary",
+            "host": "208.67.222.222"
+        },
+        {
+            "name": "opendns_secondary",
+            "host": "208.67.220.220"
+        }
+    ]
+}

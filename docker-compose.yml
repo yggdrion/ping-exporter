@@ -1,0 +1,21 @@
+services:
+  ping-exporter:
+    build: .
+    container_name: ping-exporter
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    environment:
+      - LISTEN_ADDR=:9090
+      - CONFIG_FILE=/app/targets.json
+    volumes:
+      - ./targets.json:/app/targets.json:ro
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
