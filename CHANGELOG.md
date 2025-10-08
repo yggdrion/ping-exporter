@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/yggdrion/ping-exporter/compare/v1.0.0...v1.0.1) (2025-10-08)
+
+### Bug Fixes
+
+* lint errors ([3a4eeb7](https://github.com/yggdrion/ping-exporter/commit/3a4eeb71e23a6798e211081a502b5b13fb9ff9a6))
+
 ## 1.0.0 (2025-10-08)
 
 ### Bug Fixes
