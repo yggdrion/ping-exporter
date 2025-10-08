@@ -241,11 +241,11 @@ func main() {
 	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, "OK\n")
+		_, _ = fmt.Fprintf(w, "OK\n")
 	})
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html")
-		fmt.Fprintf(w, `<html>
+		_, _ = fmt.Fprintf(w, `<html>
 <head><title>Ping Exporter</title></head>
 <body>
 <h1>Ping Exporter</h1>
@@ -255,9 +255,9 @@ func main() {
 <ul>
 `)
 		for _, target := range config.Targets {
-			fmt.Fprintf(w, "<li>%s - %s</li>\n", target.Name, target.Host)
+			_, _ = fmt.Fprintf(w, "<li>%s - %s</li>\n", target.Name, target.Host)
 		}
-		fmt.Fprintf(w, `</ul>
+		_, _ = fmt.Fprintf(w, `</ul>
 </body>
 </html>`)
 	})
