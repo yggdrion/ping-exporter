@@ -10,9 +10,14 @@ services:
       - CONFIG_FILE=/app/targets.json
     volumes:
       - ./targets.json:/app/targets.json:ro
+    # Required for ICMP ping - need NET_RAW capability and set CAP_NET_RAW
     cap_add:
       - NET_RAW
       - NET_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    # Alternative: uncomment if the above doesn't work
+    # privileged: true
     networks:
       - monitoring
 
