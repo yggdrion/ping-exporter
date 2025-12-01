@@ -1,26 +1,23 @@
-FROM golang:1.25-alpine AS builder
+FROM golang:1.23-alpine AS builder
 
-WORKDIR /build
-
-RUN apk add --no-cache git
+WORKDIR /app
 
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY *.go ./
+COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o exporter .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
-FROM alpine:latest
+FROM alpine:3.21
 
 RUN apk --no-cache add ca-certificates tzdata iputils
 
 WORKDIR /app
 
-COPY --from=builder /build/exporter .
-
+COPY --from=builder /app/main .
 COPY targets.json .
 
 EXPOSE 9090
 
-ENTRYPOINT ["/app/exporter"]
+CMD ["./main"]
